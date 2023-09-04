@@ -3,9 +3,18 @@
 	body{   
 		margin:0 auto; 
 		}
-	select{
-		font-size: 60px;
+		
+    html, body, iframe { height: 100%; }
+    html { overflow: hidden; }
+	
+	
+	@media only screen and (max-width: 600px) {
+		select{
+			font-size: 60px;
 		}
+	}
+}
+		
 </style>
 <script>
 	var book="Genesis";
@@ -94,6 +103,6 @@
 	</select>
 	
 </div>
-<iframe id=theFrame width="99%" height="100%">
+<iframe id=theFrame width="99%" height="100%" src="Genesis/1.html">
 </iframe>
 </body>
