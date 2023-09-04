@@ -1,0 +1,96 @@
+<html>
+<style>
+	body{   
+		margin:0 auto; 
+		}
+</style>
+<script>
+	var book="Genesis";
+	var chapter = "1.html";
+	function bookChanged(e)
+	{
+		var numChapters = 1;
+		book = e.value;
+		chapter = "1.html";
+		if( book == "Genesis" )
+			numChapters = 50;
+			
+		var innerHtml = "";
+		for( var i=1; i<= numChapters; i++ )
+			innerHtml += "<option value='" + i + ".html'>" + i + "</option>";
+		document.getElementById("Chapter").innerHTML = innerHtml;
+		
+		verseChanged(null);
+	}
+	function verseChanged(e)
+	{
+		if( e != null )
+			chapter = e.value;
+		document.getElementById("theFrame").src = book + "//" + chapter;
+	}
+</script>
+<body>
+<div>
+	<select name="Book" id="Book" onchange="bookChanged(this);"> 
+		<option value="Genesis">Genesis</option> 
+		<option value="Exodus">Exodus</option> 
+		<option value="Leviticus">Leviticus</option> 
+		<option value="Numbers">Numbers</option> 
+	</select>
+	<select name="Chapter" id="Chapter" onchange="verseChanged(this);"> 
+		<option value="1.html">1</option> 
+		<option value="2.html">2</option> 
+		<option value="3.html">3</option> 
+		<option value="4.htmo">4</option> 
+		<option value="5.html">5</option> 
+		<option value="6.html">6</option> 
+		<option value="7.html">7</option> 
+		<option value="8.html">8</option> 
+		<option value="9.html">9</option> 
+		<option value="10.html">10</option> 
+		<option value="11.html">11</option> 
+		<option value="12.html">12</option> 
+		<option value="13.html">13</option> 
+		<option value="14.htmo">14</option> 
+		<option value="15.html">15</option> 
+		<option value="16.html">16</option> 
+		<option value="17.html">17</option> 
+		<option value="18.html">18</option> 
+		<option value="19.html">19</option> 
+		<option value="20.html">20</option> 
+		<option value="21.html">21</option> 
+		<option value="22.html">22</option> 
+		<option value="23.html">23</option> 
+		<option value="24.htmo">24</option> 
+		<option value="25.html">25</option> 
+		<option value="26.html">26</option> 
+		<option value="27.html">27</option> 
+		<option value="28.html">28</option> 
+		<option value="29.html">29</option> 
+		<option value="30.html">30</option> 
+		<option value="31.html">31</option> 
+		<option value="32.html">32</option> 
+		<option value="33.html">33</option> 
+		<option value="34.htmo">34</option> 
+		<option value="35.html">35</option> 
+		<option value="36.html">36</option> 
+		<option value="37.html">37</option> 
+		<option value="38.html">38</option> 
+		<option value="39.html">39</option> 
+		<option value="40.html">40</option> 
+		<option value="41.html">41</option> 
+		<option value="42.html">42</option> 
+		<option value="43.html">43</option> 
+		<option value="44.htmo">44</option> 
+		<option value="45.html">45</option> 
+		<option value="46.html">46</option> 
+		<option value="47.html">47</option> 
+		<option value="48.html">48</option> 
+		<option value="49.html">49</option> 
+		<option value="50.html">50</option> 
+	</select>
+	
+</div>
+<iframe id=theFrame width="99%" height="96%">
+</iframe>
+</body>
