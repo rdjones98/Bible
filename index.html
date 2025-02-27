@@ -25,6 +25,8 @@
 		chapter = 1;
 		if( book == "Genesis" )
 			numChapters = 50;
+		else if( book == "Exodus" )
+			numChapters = 40;
 			
 		var innerHtml = "";
 		for( var i=1; i<= numChapters; i++ )
@@ -54,8 +56,8 @@
 		if( e != null )
 		{
 			chapter = e.value;
-			document.getElementById("theFrame").src = book + "//" + chapter + ".html";
 		}
+		document.getElementById("theFrame").src = book + "//" + chapter + ".html";
 	}
 </script>
 <body>
