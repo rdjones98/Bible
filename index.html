@@ -15,13 +15,22 @@
 		
 </style>
 <script>
+	var version="ChatGPT";
 	var book="Genesis";
 	var chapter = 1;
 	var numChapters=50;
+	function versionChanged(e)
+	{
+		version=e.value;
+		bookChanged(null);
+	}
 	function bookChanged(e)
 	{
 		var numChapters = 1;
-		book = e.value;
+		if (e == null )
+			book = "Genesis";
+		else
+			book = e.value;
 		chapter = 1;
 		if( book == "Genesis" )
 			numChapters = 50;
@@ -33,45 +42,49 @@
 			innerHtml += "<option value='" + i + "'>" + i + "</option>";
 		document.getElementById("Chapter").innerHTML = innerHtml;
 		
-		verseChanged(null);
+		chapterChanged(null);
 	}
-	function prevVerse(e)
+	function prevChapter(e)
 	{
 		if( chapter > 1 ) {
 			chapter --;
 			document.getElementById("Chapter").value = chapter;
-			document.getElementById("theFrame").src = book + "//" + chapter + ".html";
+			chapterChanged(null);
 		}
 	}
-	function nextVerse(e)
+	function nextChapter(e)
 	{
 		if( chapter < numChapters ) {
 			chapter ++;
 			document.getElementById("Chapter").value = chapter;
-			document.getElementById("theFrame").src = book + "//" + chapter + ".html";
+			chapterChanged(null);
 		}
 	}
-	function verseChanged(e)
+	function chapterChanged(e)
 	{
 		if( e != null )
 		{
 			chapter = e.value;
 		}
-		document.getElementById("theFrame").src = book + "//" + chapter + ".html";
+		document.getElementById("theFrame").src = version + "/" + book + "/" + chapter + ".html";
 	}
 </script>
 <body>
 <iframe id=theFrame width="100%" height="96%" src="Genesis/1.html">
 </iframe>
 <div align="center">
-	<button type="button" onclick="prevVerse(this);"><</button>
+	<button type="button" onclick="prevChapter(this);"><</button>
+	<select name="Version" id="Version" onchange="versionChanged(this);"> 
+		<option value="Genesis">ChatGPT</option> 
+		<option value="Exodus">NIV</option> 
+	</select>
 	<select name="Book" id="Book" onchange="bookChanged(this);"> 
 		<option value="Genesis">Genesis</option> 
 		<option value="Exodus">Exodus</option> 
 		<option value="Leviticus">Leviticus</option> 
 		<option value="Numbers">Numbers</option> 
 	</select>
-	<select name="Chapter" id="Chapter" onchange="verseChanged(this);"> 
+	<select name="Chapter" id="Chapter" onchange="chapterChanged(this);"> 
 		<option value="1">1</option> 
 		<option value="2">2</option> 
 		<option value="3">3</option> 
@@ -123,7 +136,7 @@
 		<option value="49">49</option> 
 		<option value="50">50</option> 
 	</select>
-	<button type="button" onclick="nextVerse(this);">></button>
+	<button type="button" onclick="nextChapter(this);">></button>
 
 </div>
 
