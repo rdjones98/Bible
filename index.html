@@ -19,6 +19,7 @@
 	var book="Genesis";
 	var chapter = 1;
 	var numChapters=50;
+	const chapters = {"Genesis":50, "Exodus":40, "Leviticus":27, "Numbers":36, "Deuteronomy":34, "Joshua":24, "Judges":21};
 	function versionChanged(e)
 	{
 		version=e.value;
@@ -31,14 +32,11 @@
 			book = "Genesis";
 		else
 			book = e.value;
+
+		// reset to first chapter and change the number of Chapters based on the book
 		chapter = 1;
-		if( book == "Genesis" )
-			numChapters = 50;
-		else if( book == "Exodus" )
-			numChapters = 40;
-		else if( book == "Leviticus" )
-			numChapters = 27;
-			
+		numChapters = chapters[book];
+
 		var innerHtml = "";
 		for( var i=1; i<= numChapters; i++ )
 			innerHtml += "<option value='" + i + "'>" + i + "</option>";
@@ -85,6 +83,9 @@
 		<option value="Exodus">Exodus</option> 
 		<option value="Leviticus">Leviticus</option> 
 		<option value="Numbers">Numbers</option> 
+		<option value="Deuteronomy">Deuteronomy</option> 
+		<option value="Joshua">Joshua</option> 
+		<option value="Judges">Judges</option> 
 	</select>
 	<select name="Chapter" id="Chapter" onchange="chapterChanged(this);"> 
 		<option value="1">1</option> 
